@@ -1,0 +1,28 @@
+body {
+  padding: 30px;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 50px;
+  color: #291818;
+}
+
+blockquote {
+  border-left: 5px solid #eee;
+  padding: 10px 20px;
+  margin: 80px;
+}
+
+h3 {
+  margin-left: 80px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+code {
+  margin-left: 80px;
+  color: #c7254e;
+}

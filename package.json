@@ -1,0 +1,16 @@
+{
+  "name": "image-search",
+  "version": "1.0.0",
+  "description": "FreeCodeCamp Back-end Project 4",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nguyen Dinh Minh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4",
+    "mongodb": "^2.2.31",
+    "request": "^2.81.0"
+  }
+}

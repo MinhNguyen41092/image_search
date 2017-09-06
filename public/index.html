@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Search</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+  <h1>Image Search Abstraction Layer!</h1>
+  <blockquote>
+    User stories:
+    <ol>
+      <li>I can get the image URLs, alt text and page urls for a set of
+        images relating to a given search string.</li>
+      <li>I can paginate through the responses by adding a ?offset=2 parameter to the URL.</li>
+      <li>I can get a list of the most recently submitted search strings.</li>
+    </ol>
+  </blockquote>
+  <h3>Example usage:</h3>
+  <code>https://betterurl.herokuapp.com/new/https://www.google.com</code><br>
+  <code>https://betterurl.herokuapp.com/new/http://foo.com:80</code>
+
+  <h3>Example output:</h3>
+  <code>{ "original_url":"http://foo.com:80", "short_url":"https://betterurl.herokuapp.com/8170" }</code>
+
+  <h3>Usage:</h3>
+  <code>"https://betterurl.herokuapp.com/8170"</code>
+
+  <h3>Will redirect to:</h3>
+  <code>"https://www.google.com"</code>
+
+</body>
+</html>
