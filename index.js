@@ -15,27 +15,36 @@ app.route('/').get((req, res) => {
 
 app.get('/api/imagesearch/:query', (req, res) => {
   const params = req.params.query;
+  const size = req.query.offset || 10;
   const search_url = api_url.concat(params);
   saveToDB(params, req, res);
   // add body to callback args will fuck up your response
   request.get(search_url, (err, response) => {
-    var results = JSON.parse(response.body).items;
-    var images = results.map((val) => {
-      var og_url = val.pagemap.metatags[0]['og:image'];
-      var snippet = val.title;
-      var thumbnail = val.pagemap.cse_thumbnail !== undefined ? val.pagemap.cse_thumbnail[0].src : "no thumbnail";
-      var context = val.link;
-      return  { "url": og_url,
-                "snippet": snippet,
-                "thumbnail": thumbnail,
-                "context": context
-              }
-    });
+    var results = JSON.parse(response.body).items.slice(0, size);
+    var images = getImagesInfo(results);
     res.send(images);
   });
 });
 
+app.get('/api/latest/imagesearch', (req, res) => {
+  getData(req, res);
+});
+
 app.listen(port);
+
+function getImagesInfo(arr) {
+  return arr.map((val) => {
+    var og_url = val.pagemap.metatags[0]['og:image'];
+    var snippet = val.title;
+    var thumbnail = val.pagemap.cse_thumbnail !== undefined ? val.pagemap.cse_thumbnail[0].src : "no thumbnail";
+    var context = val.link;
+    return  { "url": og_url,
+              "snippet": snippet,
+              "thumbnail": thumbnail,
+              "context": context
+            }
+  });
+}
 
 function saveToDB(params, req, res) {
   mongo.connect(url, (err, db) => {
@@ -50,5 +59,24 @@ function saveToDB(params, req, res) {
           const created_at = ObjectId(docs.ops._id).getTimestamp();
           // res.send({"term": params, "when": created_at});
       });
+  });
+}
+
+function getData(req, res) {
+  mongo.connect(url, (err, db) => {
+    if(err) throw err;
+    else
+      const collection = db.collection('queries');
+      collection.find({}, {
+        "term": 1
+      }).toArray((err, docs) => {
+        var history = docs.map((val) => {
+          return {
+            "term": val.term,
+            "when": ObjectId(val._id).getTimestamp()
+          }
+        })
+        res.send(history);
+      })
   });
 }

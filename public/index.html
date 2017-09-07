@@ -17,17 +17,16 @@
     </ol>
   </blockquote>
   <h3>Example usage:</h3>
-  <code>https://betterurl.herokuapp.com/new/https://www.google.com</code><br>
-  <code>https://betterurl.herokuapp.com/new/http://foo.com:80</code>
+  <code>https://searchbetterimage.herokuapp.com/api/imagesearch/lolcats%20funny?offset=10</code><br>
 
   <h3>Example output:</h3>
-  <code>{ "original_url":"http://foo.com:80", "short_url":"https://betterurl.herokuapp.com/8170" }</code>
+  <code>[{"url":"https://i.chzbgr.com/original/9071406848/h5CBDCB8B/1","snippet":"Lolcats - LOL at Funny Cat Memes - Funny cat pictures with words ...","thumbnail":"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQMLcZWBERlbE6iNTAMGSU1xrY9ayZbB2OIgNlYtWCWoJj8cf6RsM6i-Zc","context":"http://icanhas.cheezburger.com/lolcats"},{"url":"http://www.lolcats.com/images/logo.png","snippet":"LOLCats - Funny cat pictures","thumbnail":"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR8hkDSbxoKKNODgZDDb_nZyi6WEMvIH3x-bbcRmXrGwdDTQ397HuQg2cc","context":"http://www.lolcats.com/"},{"url":"https://i.chzbgr.com/original/9071407616/hF02360D7/1","snippet":"Lolcats - Page 2 - LOL at Funny Cat Memes - Funny cat pictures with ...","thumbnail":"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcScF-mF4G6dB-FjyDCfW4eo0c5Qs8jYh-G477jneIAwcgjfzT8dgdH1Fr4","context":"http://icanhas.cheezburger.com/lolcats/page/2"}]</code>
 
   <h3>Usage:</h3>
-  <code>"https://betterurl.herokuapp.com/8170"</code>
+  <code>"https://searchbetterimage.herokuapp.com/api/latest/imagesearch/"</code>
 
-  <h3>Will redirect to:</h3>
-  <code>"https://www.google.com"</code>
+  <h3>Will display search history:</h3>
+  <code>[{"term":"lolcats funny","when":"2017-09-06T07:47:34.000Z"},{"term":"lolcats funny","when":"2017-09-06T07:48:00.000Z"},{"term":"lolcats funny","when":"2017-09-06T07:51:15.000Z"},{"term":"lolcats funny","when":"2017-09-06T07:53:57.000Z"},{"term":"lolcats funny","when":"2017-09-06T08:21:59.000Z"},{"term":"lolcats funny","when":"2017-09-06T08:22:32.000Z"}]</code>
 
 </body>
 </html>
